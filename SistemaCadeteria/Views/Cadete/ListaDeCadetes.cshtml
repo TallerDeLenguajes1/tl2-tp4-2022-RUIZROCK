@@ -1,0 +1,37 @@
+﻿@model List<SistemaCadeteria.Models.Cadete>
+@{
+    ViewData["Title"] = "ListaDeCadetes";
+    
+}
+
+<h1>Lista de cadetes</h1>
+
+<section>
+    <h3><a class="btn btn-primary" asp-controller="Cadete" asp-action="CrearCadete">Crear cadete</a></h3>
+    <article>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Acciónes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Cadete cadete in Model)
+                {
+                    <tr>
+                        <td>@cadete.verNombre()</td>
+                        <td>@cadete.verDireccion()</td>
+                        <td>@cadete.verTelefono()</td>
+                        <td><a class ="btn btn-danger"  asp-controller="Cadete" asp-action="BorrarCadete" asp-route-id="@cadete.verId()">Eliminar</a></td>
+                        <!--asp-controller="Product" asp-action="GetProduct" asp-route-id="10"-->
+                    </tr>
+                    
+                }
+                <tr></tr>
+            </tbody>
+        </table>
+    </article>
+</section>
